@@ -1,0 +1,30 @@
+{
+  "name": "hxc",
+  "version": "0.0.0",
+  "description": "Hardcore Web Components",
+  "browser": "./hxc.js",
+  "module": "./hxc.js",
+  "scripts": {
+    "start": "http-server -o",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pinkhominid/hxc.git"
+  },
+  "keywords": [
+    "hardcore",
+    "web",
+    "components",
+    "hxc"
+  ],
+  "author": "John Ericson <pinkhominid@birdbomb.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pinkhominid/hxc/issues"
+  },
+  "homepage": "https://github.com/pinkhominid/hxc#readme",
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
+}
