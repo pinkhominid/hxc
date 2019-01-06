@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>H×C</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Open Sans', sans-serif;
+        color: #222;
+        --drawer-height: 85vh;
+      }
+      header h1 { font-size: 48px; text-align: center; }
+      h1 {
+        font-size: 32px;
+      }
+      p {
+        margin-left: 50px;
+      }
+      header, section {
+        padding: 0 50px 35px;
+        border: 1px solid transparent;
+      }
+      section:nth-child(even) {
+        background-color: #ededf0;
+      }
+      hxc-drawer {
+        --drawer-size: 85vh;
+      }
+      hxc-tab {
+        border-right: 1px solid #000;
+        border-top: 1px solid #000;
+        padding: 5px;
+        background-color: #777;
+        color: #fff;
+      }
+      hxc-tabpanel {
+        border-top: 1px solid #000;
+      }
+      hxc-tab[selected] {
+        background-color: #444;
+      }
+      hxc-tabs:not(:defined), hxc-tab:not(:defined), hxc-tabpanel:not(:defined) {
+        display: block;
+      }
+      hxc-timeline {
+        height: 100%;
+      }
+      hxc-drawer hxc-tabs {
+        margin-top: -30px;
+      }
+      hxc-drawer hxc-tabpanel {
+        height: var(--drawer-size);
+        background: #ededf0;
+      }
+    </style>
+
+    <!-- ResizeObserver polyfill for Mozilla and Safari -->
+    <script src="https://unpkg.com/resize-observer-polyfill"></script>
+    <!-- EventTarget polyfill for Safari -->
+    <script src="https://unpkg.com/@ungap/event-target"></script>
+
+    <script type="module" src="./hxc.js" async></script>
+    <script type="module">
+      document.addEventListener('DOMContentLoaded', () => {
+        const drawer = document.querySelector('hxc-drawer');
+        const timeline = document.querySelector('hxc-timeline');
+
+        drawer.addEventListener('click', e => {
+          const tag = e.target.tagName.toLowerCase();
+          if (tag === 'hxc-tabs') {
+            drawer.open = !drawer.open
+          } else if (!drawer.open && tag === 'hxc-tab') {
+            drawer.open = true;
+          }
+        });
+
+        timeline.items = new Array(2000).fill('item');
+      });
+    </script>
+  </head>
+  <body>
+    <header><h1>H×C</h1></header>
+    <section>
+      <h1>Icon</h1>
+      <hxc-icon type="back-arrow"></hxc-icon>
+      <hxc-icon type="forward-arrow"></hxc-icon>
+      <hxc-icon type="up-arrow"></hxc-icon>
+      <hxc-icon type="down-arrow"></hxc-icon>
+    </section>
+
+    <section>
+      <h1>Icon with text</h1>
+      <hxc-icon role="img" type="back-arrow">Back</hxc-icon>
+      <hxc-icon role="img" type="forward-arrow">Forward</hxc-icon>
+      <hxc-icon role="img" type="up-arrow">Up</hxc-icon>
+      <hxc-icon role="img" type="down-arrow">Down</hxc-icon>
+    </section>
+
+    <section>
+      <h1>Icon with text before</h1>
+      <hxc-icon type="back-arrow"><span slot="before-icon">Back</span></hxc-icon>
+      <hxc-icon type="forward-arrow"><span slot="before-icon">Forward</span></hxc-icon>
+      <hxc-icon type="up-arrow"><span slot="before-icon">Up</span></hxc-icon>
+      <hxc-icon type="down-arrow"><span slot="before-icon">Down</span></hxc-icon>
+    </section>
+
+    <section>
+      <h1>Icon button with text</h1>
+      <button><hxc-icon type="back-arrow">Back</hxc-icon></button>
+      <button><hxc-icon type="forward-arrow"><span>Forward</span></hxc-icon></button>
+      <button><hxc-icon type="up-arrow"></hxc-icon>Up</button>
+      <button><hxc-icon type="down-arrow"></hxc-icon><span>Down</span></button>
+    </section>
+
+    <section>
+      <h1>Tabs</h1>
+      <hxc-tabs>
+        <hxc-tab role="heading" slot="tab">Tab 1</hxc-tab>
+        <hxc-tabpanel role="region" slot="panel">Panel 1</hxc-tabpanel>
+        <hxc-tab role="heading" slot="tab">Tab 2</hxc-tab>
+        <hxc-tabpanel role="region" slot="panel"><div>Panel 2</div></hxc-tabpanel>
+        <hxc-tab role="heading" slot="tab">Tab 3</hxc-tab>
+        <hxc-tabpanel role="region" slot="panel">Panel 3</hxc-tabpanel>
+      </hxc-tabs>
+    </section>
+
+    <section>
+      <hxc-drawer>
+        <hxc-tabs>
+          <hxc-tab role="heading" slot="tab">Timeline in tabbed-drawer</hxc-tab>
+          <hxc-tabpanel role="region" slot="panel">
+            <p>A virtual-scroller timeline nested in a tabbed-drawer</p>
+            <hxc-timeline></hxc-timeline>
+          </hxc-tabpanel>
+        </hxc-tabs>
+      </hxc-drawer>
+    </section>
+  </body>
+</html>
