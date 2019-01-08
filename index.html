@@ -7,27 +7,53 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <style>
       body {
-        margin: 0;
+        margin: 0 auto;
         font-family: 'Open Sans', sans-serif;
         color: #222;
-        --drawer-height: 85vh;
+        max-width: 900px;
       }
-      header h1 { font-size: 48px; text-align: center; }
+      header h1 {
+        font-size: 32px;
+        text-align: center;
+      }
+      header h1 span,
+      header h1 em {
+        vertical-align: middle;
+      }
+      header h1 em {
+        line-height: 64px;
+        font-style: normal;
+        font-size: 128px;
+        -webkit-text-stroke: 1px black;
+        color: white;
+        text-shadow:
+          3px 3px 0 #000,
+          -1px -1px 0 #000,
+          1px -1px 0 #000,
+          -1px 1px 0 #000,
+          1px 1px 0 #000;
+      }
       h1 {
         font-size: 32px;
       }
       p {
+        text-align: right;
+        font-style: italic;
         margin-left: 50px;
+        margin-right: 50px;
       }
       header, section {
         padding: 0 50px 35px;
         border: 1px solid transparent;
       }
+      section:nth-child(odd) {
+        text-align: right;
+      }
       section:nth-child(even) {
         background-color: #ededf0;
       }
       hxc-drawer {
-        --drawer-size: 85vh;
+        --drawer-size: calc(100vh - 140px);
       }
       hxc-tab {
         border-right: 1px solid #000;
@@ -82,7 +108,7 @@
     </script>
   </head>
   <body>
-    <header><h1>H×C</h1></header>
+    <header><h1><span>H</span><em>×</em><span>C</span></h1></header>
     <section>
       <h1>Icon</h1>
       <hxc-icon type="back-arrow"></hxc-icon>
@@ -108,7 +134,7 @@
     </section>
 
     <section>
-      <h1>Icon button with text</h1>
+      <h1>Icon with text in button</h1>
       <button><hxc-icon type="back-arrow">Back</hxc-icon></button>
       <button><hxc-icon type="forward-arrow"><span>Forward</span></hxc-icon></button>
       <button><hxc-icon type="up-arrow"></hxc-icon>Up</button>
@@ -127,16 +153,14 @@
       </hxc-tabs>
     </section>
 
-    <section>
-      <hxc-drawer>
-        <hxc-tabs>
-          <hxc-tab role="heading" slot="tab">Timeline in tabbed-drawer</hxc-tab>
-          <hxc-tabpanel role="region" slot="panel">
-            <p>A virtual-scroller timeline nested in a tabbed-drawer</p>
-            <hxc-timeline></hxc-timeline>
-          </hxc-tabpanel>
-        </hxc-tabs>
-      </hxc-drawer>
-    </section>
+    <hxc-drawer>
+      <hxc-tabs>
+        <hxc-tab role="heading" slot="tab">Timeline in tabbed-drawer</hxc-tab>
+        <hxc-tabpanel role="region" slot="panel">
+          <p>A virtual-scroller timeline nested in a tabbed-drawer</p>
+          <hxc-timeline></hxc-timeline>
+        </hxc-tabpanel>
+      </hxc-tabs>
+    </hxc-drawer>
   </body>
 </html>
