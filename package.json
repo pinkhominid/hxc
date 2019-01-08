@@ -1,7 +1,7 @@
 {
   "name": "hxc",
   "version": "0.1.0",
-  "description": "Hardcore Web Components",
+  "description": "Hardcore Components",
   "browser": "./hxc.js",
   "module": "./hxc.js",
   "scripts": {

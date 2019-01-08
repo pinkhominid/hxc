@@ -1,6 +1,6 @@
 <h1 align="center">
 	<br>
-	<img width="312" src="logo.png" alt="Hardcore Components">
+	<img width="312" src="https://raw.githubusercontent.com/pinkhominid/hxc/master/logo.png" alt="Hardcore Components">
 	<br>
 	<br>
 	<br>
