@@ -1,6 +1,6 @@
 {
   "name": "hxc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Hardcore Components",
   "browser": "./hxc.js",
   "module": "./hxc.js",
